@@ -10,6 +10,19 @@
 schema = 1
 
 # ---------------------------------------------------------------- ship with bromigOS
+# All nine of bromigOS's themes (its themes/): the default, two painted worlds and six
+# colour themes.
+[[extension]]
+name = "wick"
+display_name = "Wick"
+description = "Phosphor green on void: the burn-in look of the Wick's console."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/wick"
+preview = "previews/wick.jpg"
+tags = ["default", "console", "dark"]
+bundled = true
+
 [[extension]]
 name = "mire"
 display_name = "Mire"
@@ -30,6 +43,72 @@ url = "https://github.com/bromigos-org/bromigOS"
 path = "themes/tidewell"
 preview = "previews/tidewell.jpg"
 tags = ["world", "painted", "dark"]
+bundled = true
+
+[[extension]]
+name = "rime"
+display_name = "Rime"
+description = "Ice-blue on a blizzard night: Station Nine's dish, lit by the aurora."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/rime"
+preview = "previews/rime.jpg"
+tags = ["colours", "dark"]
+bundled = true
+
+[[extension]]
+name = "sunder"
+display_name = "Sunder"
+description = "Sun-gold on scorched hull plate, the Debtor's red behind it."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/sunder"
+preview = "previews/sunder.jpg"
+tags = ["colours", "dark"]
+bundled = true
+
+[[extension]]
+name = "cinder"
+display_name = "Cinder"
+description = "Ember orange on soot: the foundries that never went out."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/cinder"
+preview = "previews/cinder.jpg"
+tags = ["colours", "dark"]
+bundled = true
+
+[[extension]]
+name = "lowtown"
+display_name = "Lowtown"
+description = "Neon on wet asphalt: the Low Note after midnight."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/lowtown"
+preview = "previews/lowtown.jpg"
+tags = ["colours", "dark"]
+bundled = true
+
+[[extension]]
+name = "highwind"
+display_name = "Highwind"
+description = "Kite-lantern gold on a dusk sky, sky-whales below."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/highwind"
+preview = "previews/highwind.jpg"
+tags = ["colours", "dark"]
+bundled = true
+
+[[extension]]
+name = "deepvein"
+display_name = "Deepvein"
+description = "Amethyst on cavern black: the crystals that sing back."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/deepvein"
+preview = "previews/deepvein.jpg"
+tags = ["colours", "dark"]
 bundled = true
 
 # ---------------------------------------------------------------- examples (examples/, from `bromigos ext new`)

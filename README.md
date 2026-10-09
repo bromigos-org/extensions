@@ -23,7 +23,7 @@ This repository also holds working examples, previews and the check that CI runs
   <img src="previews/tidewell.jpg" alt="The Tidewell theme: the bromigOS desktop over the sea at night, with panels and a terminal" width="32%">
   <img src="previews/teal-glass.jpg" alt="The Teal Glass example theme: the bromigOS desktop in teal on slate" width="32%">
 </p>
-<p align="center"><sub>Three themes in the catalog: Mire, Tidewell and the Teal Glass example. Each picture is the theme switcher's own preview.</sub></p>
+<p align="center"><sub>Three of the catalog's themes: Mire, Tidewell and the Teal Glass example. Each picture is the theme switcher's own preview.</sub></p>
 
 ## Find and install an extension
 
@@ -140,8 +140,9 @@ runs code, they see its declared permissions first and decide for themselves.
 | `tags` | No | Words that help search find it |
 | `bundled` | No | `true` for an extension that ships with bromigOS |
 
-The Mire and Tidewell themes ship with bromigOS. They are listed with `bundled = true`
-so search shows them, and there is nothing to install.
+All nine of bromigOS's own themes ship with it: Wick (the default), the Mire and Tidewell
+worlds, and the colour themes Rime, Sunder, Cinder, Lowtown, Highwind and Deepvein. They
+are listed with `bundled = true` so search shows them, and there is nothing to install.
 
 ## What's in this repository
 
