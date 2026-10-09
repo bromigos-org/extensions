@@ -26,6 +26,7 @@ danger_text = "#ffd8dc"
 cyan = "#6fd3ff"
 gold = "#ffd36a"
 white = "#effffd"
+rust = "#5a1a22"
 
 [holo]
 line = "primary"
@@ -59,3 +60,12 @@ color12 = "#9fc6ff"
 color13 = "#e8b0e6"
 color14 = "#a0e4ff"
 color15 = "#f4fffe"
+
+[qt]
+view = "#0a1012"
+view_alt = "#0e1618"
+header = "#0c1315"
+window_alt = "#121c1f"
+button = "#16262a"
+neutral_on_selection = "#3a2e0b"
+negative_on_selection = "#5a1a22"
