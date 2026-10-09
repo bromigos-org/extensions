@@ -1,0 +1,16 @@
+# Every push and pull request: the catalog and its examples (tools/check.py: the JSON
+# Schemas, previews, names, kinds, paths, executable bits, permissions against the parts).
+name: check
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check the catalog
+        run: |
+          python3 -m venv /tmp/venv
+          /tmp/venv/bin/pip install --quiet 'jsonschema==4.23.0'
+          /tmp/venv/bin/python tools/check.py

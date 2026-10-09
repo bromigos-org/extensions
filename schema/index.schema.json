@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bromigos-org/extensions/blob/main/schema/index.schema.json",
+  "title": "index.toml",
+  "description": "The bromigOS extension catalog.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "extension"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "extension": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description",
+          "kinds",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kinds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "theme",
+                "live-deck",
+                "live-layer",
+                "widget",
+                "vector-tool",
+                "vector-memory",
+                "vector-skill",
+                "homelab-adapter",
+                "command",
+                "hook"
+              ]
+            }
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^(https://|ssh://|git@)"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "not": {
+              "pattern": "(^/|^-|(^|/)\\.\\.(/|$))"
+            },
+            "description": "relative to the extension's folder; never absolute, never .."
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preview": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "licence": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "bundled": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

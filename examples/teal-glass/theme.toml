@@ -1,0 +1,4 @@
+# Teal Glass (docs/theming.md, "theme.toml").
+name = "Teal Glass"
+description = "Teal glass on deep slate: a starter theme to make your own."
+mode = "dark"

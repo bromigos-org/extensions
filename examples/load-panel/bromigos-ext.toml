@@ -1,0 +1,21 @@
+# Load Panel: a desktop widget (made by `bromigos ext new widget`; docs/extensions.md).
+[extension]
+name = "load-panel"
+version = "0.1.0"
+description = "A desktop panel: this machine's load average."
+authors = []
+licence = "MIT"
+tags = ["widget"]
+
+[requires]
+bromigos = ">=1.0, <2"
+
+[[provides]]
+kind = "widget"
+path = "widget.py"
+name = "load_panel"              # the panel's name (layout.json's "plugins" can place it)
+
+[permissions]
+network = "none"
+filesystem = []
+code = true                     # a widget is Python the widgets run

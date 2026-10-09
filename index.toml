@@ -1,0 +1,82 @@
+# The bromigOS extension catalog (docs/extensions.md in bromigOS). `bromigos ext search`
+# reads this file; the theme switcher shows its themes with their
+# previews; `bromigos ext install <name>` installs an entry by name.
+#
+# Each [[extension]]: name (as its manifest says), description, kinds (what it
+# provides), url (a git repository) and, when it isn't the repository's root, path (its
+# folder in it); ref pins a tag or branch; preview is a picture in previews/ (or an
+# https URL); tags help search. `bundled = true` marks what ships with bromigOS already
+# (listed to be found, nothing to install). CI checks every entry (tools/check.py).
+schema = 1
+
+# ---------------------------------------------------------------- ship with bromigOS
+[[extension]]
+name = "mire"
+display_name = "Mire"
+description = "A night bayou: black mirror water, moss, fireflies and a lantern on a stilt shack."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/mire"
+preview = "previews/mire.png"
+tags = ["world", "painted", "dark"]
+bundled = true
+
+[[extension]]
+name = "tidewell"
+display_name = "Tidewell"
+description = "The sea at night, split at the waterline: Greywater Light above, the Choir below."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/bromigOS"
+path = "themes/tidewell"
+preview = "previews/tidewell.png"
+tags = ["world", "painted", "dark"]
+bundled = true
+
+# ---------------------------------------------------------------- examples (examples/, from `bromigos ext new`)
+[[extension]]
+name = "teal-glass"
+display_name = "Teal Glass"
+description = "Teal glass on deep slate: a colour theme, the theme starter as it comes."
+kinds = ["theme"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/teal-glass"
+preview = "previews/teal-glass.png"
+tags = ["example", "colours", "dark"]
+
+[[extension]]
+name = "hello-deck"
+display_name = "Hello Deck"
+description = "A full-screen hologram of this machine's load average: the live-deck starter."
+kinds = ["live-deck"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/hello-deck"
+preview = "previews/hello-deck.png"
+tags = ["example", "deck", "hologram"]
+
+[[extension]]
+name = "load-panel"
+display_name = "Load Panel"
+description = "A desktop widget with the load average on seven-segment digits: the widget starter."
+kinds = ["widget"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/load-panel"
+preview = "previews/load-panel.png"
+tags = ["example", "widget", "system"]
+
+[[extension]]
+name = "uptime-tool"
+display_name = "Uptime Tool"
+description = "A VECTOR tool: how long this machine has been up, and its load (read level)."
+kinds = ["vector-tool"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/uptime-tool"
+tags = ["example", "vector", "tool"]
+
+[[extension]]
+name = "this-host"
+display_name = "This Host"
+description = "A homelab adapter that reports this machine as a host (CPU, memory, disk, load)."
+kinds = ["homelab-adapter"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/this-host"
+tags = ["example", "homelab", "adapter"]

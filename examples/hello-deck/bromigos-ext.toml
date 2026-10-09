@@ -1,0 +1,21 @@
+# Hello Deck: a live-layer deck (made by `bromigos ext new live-deck`; docs/extensions.md).
+[extension]
+name = "hello-deck"
+version = "0.1.0"
+description = "A full-screen hologram: this machine's load average."
+authors = []
+licence = "MIT"
+tags = ["deck"]
+
+[requires]
+bromigos = ">=1.0, <2"
+
+[[provides]]
+kind = "live-deck"
+path = "deck.py"
+name = "hello-deck"               # opened with: bromigos-live plugin hello-deck
+
+[permissions]
+network = "none"                # list the hosts it fetches from, e.g. ["api.example.com"]
+filesystem = []                 # paths outside this folder it reads, e.g. ["/proc/loadavg"]
+code = true                     # a deck is Python the live layer runs
