@@ -33,7 +33,9 @@ is in bromigOS's `docs/extensions.md`.
 2. Publish it: a git repository with `bromigos-ext.toml` at its root (or a folder in one:
    give `path`), a licence, and a tag (`git tag v1.0.0 && git push --tags`).
 3. Add an `[[extension]]` to `index.toml` (and a preview to `previews/`, a PNG, JPEG or
-   WebP under 1 MB), run `python3 tools/check.py`, and open a pull request.
+   WebP under 1 MB; for a theme, the switcher's own picture of the desktop wearing it:
+   `bromigos theme previews --dir THEME --out previews/NAME.jpg`), run
+   `python3 tools/check.py`, and open a pull request.
 
 The catalog checks listings, not code: an extension that runs code shows its declared
 permissions before it installs, and the person installing decides. Mire and Tidewell ship
