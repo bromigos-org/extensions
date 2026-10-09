@@ -1,4 +1,10 @@
+<p align="center">
+  <img src=".github/assets/bromigos-lockup.svg" alt="Bromigos, the network" width="360">
+</p>
+
 # bromigOS extensions
+
+[![check](https://github.com/bromigos-org/extensions/actions/workflows/check.yml/badge.svg)](https://github.com/bromigos-org/extensions/actions/workflows/check.yml)
 
 This repository is the catalog of extensions for bromigOS. An extension adds one thing
 to the desktop, such as a theme, a widget or a tool for VECTOR, bromigOS's desktop AI.
@@ -11,6 +17,13 @@ shows the catalog's themes after your own.
 
 This repository also holds working examples, previews and the check that CI runs. See
 [What's in this repository](#whats-in-this-repository).
+
+<p align="center">
+  <img src="previews/mire.jpg" alt="The Mire theme: the bromigOS desktop over a night bayou, with panels and a terminal" width="32%">
+  <img src="previews/tidewell.jpg" alt="The Tidewell theme: the bromigOS desktop over the sea at night, with panels and a terminal" width="32%">
+  <img src="previews/teal-glass.jpg" alt="The Teal Glass example theme: the bromigOS desktop in teal on slate" width="32%">
+</p>
+<p align="center"><sub>Three themes in the catalog: Mire, Tidewell and the Teal Glass example. Each picture is the theme switcher's own preview.</sub></p>
 
 ## Find and install an extension
 
@@ -140,6 +153,7 @@ so search shows them, and there is nothing to install.
 | `schema/` | JSON Schemas for `bromigos-ext.toml` and `index.toml` |
 | `tools/check.py` | The catalog check |
 | `.github/workflows/check.yml` | The CI job that runs the check |
+| `.github/assets/` | The logo at the top of this README |
 
 To get completion and checks while you edit a manifest, point your editor's TOML schema
 setting at `schema/bromigos-ext.schema.json`.
