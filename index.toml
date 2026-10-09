@@ -17,7 +17,7 @@ description = "A night bayou: black mirror water, moss, fireflies and a lantern 
 kinds = ["theme"]
 url = "https://github.com/bromigos-org/bromigOS"
 path = "themes/mire"
-preview = "previews/mire.png"
+preview = "previews/mire.jpg"
 tags = ["world", "painted", "dark"]
 bundled = true
 
@@ -28,7 +28,7 @@ description = "The sea at night, split at the waterline: Greywater Light above, 
 kinds = ["theme"]
 url = "https://github.com/bromigos-org/bromigOS"
 path = "themes/tidewell"
-preview = "previews/tidewell.png"
+preview = "previews/tidewell.jpg"
 tags = ["world", "painted", "dark"]
 bundled = true
 
@@ -40,7 +40,7 @@ description = "Teal glass on deep slate: a colour theme, the theme starter as it
 kinds = ["theme"]
 url = "https://github.com/bromigos-org/extensions"
 path = "examples/teal-glass"
-preview = "previews/teal-glass.png"
+preview = "previews/teal-glass.jpg"
 tags = ["example", "colours", "dark"]
 
 [[extension]]
