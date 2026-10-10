@@ -101,44 +101,14 @@ folder, they add `--path FOLDER`. Without a tag, an install follows your default
 
 ## List an extension in this catalog
 
-Listing an extension here lets people find it with `bromigos ext search` and install it
-by name.
-
-1. Add an `[[extension]]` entry to `index.toml`. The fields are below.
-2. Add a preview to `previews/`. It must be a PNG, JPEG or WebP under 1 MB. For a theme,
-   render the switcher's own preview of the desktop wearing it.
-
-   ```sh
-   bromigos theme previews --dir path/to/theme --out previews/NAME.jpg
-   ```
-
-3. Run the catalog check. It needs Python 3.11 or newer and the `jsonschema` package.
-
-   ```sh
-   python3 -m venv /tmp/venv && /tmp/venv/bin/pip install jsonschema
-   /tmp/venv/bin/python tools/check.py
-   ```
-
-   It prints each error, then a count such as `7 entries, 0 errors`.
-4. Open a pull request. CI runs the same check on every push and pull request.
+Listing an extension here lets people find it with `bromigos ext search`, and in the
+widget gallery's **Get more widgets**, and install it by name. To list one, add an entry
+to `index.toml` and a preview, run `tools/check.py`, and open a pull request.
+[CONTRIBUTING.md](CONTRIBUTING.md) has each step, the entry's fields, and what reviewers
+look for.
 
 The check reads the listing, not the code. When someone installs an extension that
 runs code, they see its declared permissions first and decide for themselves.
-
-### Entry fields
-
-| Field | Required | What it holds |
-|---|---|---|
-| `name` | Yes | The extension's name, exactly as its manifest gives it |
-| `description` | Yes | One line on what it is |
-| `kinds` | Yes | The kinds of the parts it provides, such as `["theme"]` |
-| `url` | Yes | The git repository, starting with `https://`, `ssh://` or `git@` |
-| `display_name` | No | The name people see, such as `Teal Glass` |
-| `path` | No | The extension's folder, when it isn't at the repository's root |
-| `ref` | No | A tag or branch to install instead of the default branch |
-| `preview` | No | A picture in `previews/`, or an `https://` URL |
-| `tags` | No | Words that help search find it |
-| `bundled` | No | `true` for an extension that ships with bromigOS |
 
 All nine of bromigOS's own themes ship with it: Wick (the default), the Mire and Tidewell
 worlds, and the colour themes Rime, Sunder, Cinder, Lowtown, Highwind and Deepvein. They
@@ -156,6 +126,8 @@ are listed with `bundled = true` so search shows them, and there is nothing to i
 | `.github/workflows/check.yml` | The CI job that runs the check |
 | `.github/assets/` | The logo at the top of this README |
 | `.github/ISSUE_TEMPLATE/` | The forms for a bug report or a listing request |
+| `.github/pull_request_template.md` | The checklist a pull request starts with |
+| `CONTRIBUTING.md` | How to list an extension, what the check tests, and what reviewers look for |
 | `SECURITY.md` | How to report a harmful extension or a security problem, privately |
 | `CODE_OF_CONDUCT.md` | The Contributor Covenant, the rules for taking part here |
 

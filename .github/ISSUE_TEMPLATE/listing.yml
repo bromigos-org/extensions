@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        The quickest way is a pull request that adds the entry to `index.toml` and a preview to `previews/` (README, "List an extension in this catalog"). Use this form if you'd rather someone else made the change.
+        The quickest way is a pull request that adds the entry to `index.toml` and a preview to `previews/` (CONTRIBUTING.md). Use this form if you'd rather someone else made the change.
   - type: input
     id: name
     attributes:
