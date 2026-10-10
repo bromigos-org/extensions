@@ -155,6 +155,9 @@ are listed with `bundled = true` so search shows them, and there is nothing to i
 | `tools/check.py` | The catalog check |
 | `.github/workflows/check.yml` | The CI job that runs the check |
 | `.github/assets/` | The logo at the top of this README |
+| `.github/ISSUE_TEMPLATE/` | The forms for a bug report or a listing request |
+| `SECURITY.md` | How to report a harmful extension or a security problem, privately |
+| `CODE_OF_CONDUCT.md` | The Contributor Covenant, the rules for taking part here |
 
 To get completion and checks while you edit a manifest, point your editor's TOML schema
 setting at `schema/bromigos-ext.schema.json`.

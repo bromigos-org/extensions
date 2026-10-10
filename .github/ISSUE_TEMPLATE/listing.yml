@@ -1,0 +1,39 @@
+name: List an extension
+description: Ask for an extension to be added to the catalog, or for a listing to change.
+labels: [listing]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The quickest way is a pull request that adds the entry to `index.toml` and a preview to `previews/` (README, "List an extension in this catalog"). Use this form if you'd rather someone else made the change.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The extension's name, exactly as its `bromigos-ext.toml` gives it.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Repository
+      description: The git repository, with `@TAG` if it should be pinned, and the folder if it isn't at the root.
+      placeholder: https://github.com/you/thing@v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What it does
+      description: One line for the catalog, and its kinds (theme, widget, vector-tool...).
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you ask
+      options:
+        - label: "`bromigos ext validate` passes on it"
+          required: true
+        - label: It has a licence and a README
+          required: true
