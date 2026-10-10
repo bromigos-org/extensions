@@ -54,7 +54,7 @@ Each part of an extension has a kind. One extension can provide several parts.
 | `theme` | Colours, backgrounds, or a painted world | [teal-glass](examples/teal-glass) |
 | `live-deck` | A deck, a full-screen hologram you open with `bromigos-live plugin NAME` | [hello-deck](examples/hello-deck) |
 | `live-layer` | A shader layer drawn over the live background | |
-| `widget` | A panel on the desktop | [load-panel](examples/load-panel) |
+| `widget` | A panel on the desktop | [load-panel](examples/load-panel), [moon-phase](examples/moon-phase) |
 | `vector-tool` | Tools that VECTOR can call | [uptime-tool](examples/uptime-tool) |
 | `vector-memory` | A memory store for VECTOR | |
 | `vector-skill` | A skill, a Markdown guide that VECTOR loads when a question needs it | |
@@ -149,7 +149,7 @@ are listed with `bundled = true` so search shows them, and there is nothing to i
 | Path | What it is |
 |---|---|
 | `index.toml` | The catalog |
-| `examples/` | One working extension for each of five kinds, made with `bromigos ext new` |
+| `examples/` | Working extensions: one for each of five kinds, made with `bromigos ext new`, and a second widget, Moon Phase |
 | `previews/` | The pictures that search and the theme switcher show |
 | `schema/` | JSON Schemas for `bromigos-ext.toml` and `index.toml` |
 | `tools/check.py` | The catalog check |

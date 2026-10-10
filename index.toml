@@ -141,6 +141,20 @@ url = "https://github.com/bromigos-org/extensions"
 path = "examples/load-panel"
 preview = "previews/load-panel.png"
 tags = ["example", "widget", "system"]
+authors = ["bromigOS"]
+licence = "MIT"
+
+[[extension]]
+name = "moon-phase"
+display_name = "Moon Phase"
+description = "A desktop widget with the Moon's phase tonight, worked out from the date: nothing is fetched."
+kinds = ["widget"]
+url = "https://github.com/bromigos-org/extensions"
+path = "examples/moon-phase"
+preview = "previews/moon-phase.png"
+tags = ["example", "widget", "fun"]
+authors = ["bromigOS"]
+licence = "MIT"
 
 [[extension]]
 name = "uptime-tool"

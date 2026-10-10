@@ -1,0 +1,21 @@
+# Moon Phase: a desktop widget, the Moon tonight (docs/extensions.md in bromigOS).
+[extension]
+name = "moon-phase"
+version = "0.1.0"
+description = "A desktop panel: the Moon's phase tonight, worked out from the date."
+authors = ["bromigOS"]
+licence = "MIT"
+tags = ["widget", "fun"]
+
+[requires]
+bromigos = ">=1.0, <2"
+
+[[provides]]
+kind = "widget"
+path = "widget.py"
+name = "moon_phase"              # the panel's name (layout.json's "plugins" can place it)
+
+[permissions]
+network = "none"
+filesystem = []
+code = true                     # a widget is Python the widgets run
