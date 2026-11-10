@@ -123,6 +123,7 @@ are listed with `bundled = true` so search shows them, and there is nothing to i
 | `previews/` | The pictures that search and the theme switcher show |
 | `schema/` | JSON Schemas for `bromigos-ext.toml` and `index.toml` |
 | `tools/check.py` | The catalog check |
+| `tools/test_check.py` | Tests for the catalog check |
 | `.github/workflows/check.yml` | The CI job that runs the check |
 | `.github/assets/` | The logo at the top of this README |
 | `.github/ISSUE_TEMPLATE/` | The forms for a bug report or a listing request |

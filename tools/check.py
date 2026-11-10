@@ -7,7 +7,8 @@
     manifest whose name and kinds match the entry; each part's path exists, inside the
     folder, not a symlink; commands and hooks are committed executable; Python compiles;
     the permissions match the parts (code = true when a part runs code, a VECTOR level
-    for VECTOR tools and memory, never the terminal); no symlink leaves the folder.
+    for VECTOR tools and memory, never the terminal); no symlink leaves the folder;
+  * every folder under examples/ has an entry, so none goes unchecked.
 
 bromigos ext validate (in bromigOS) is the full check at install time; this one keeps the
 catalog honest without bromigOS's binary.
@@ -15,14 +16,17 @@ catalog honest without bromigOS's binary.
 import json
 import os
 import py_compile
+import re
 import subprocess
 import sys
 import tempfile
 import tomllib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HERE_URLS = ("https://github.com/bromigos-org/extensions", "https://github.com/bromigos-org/extensions.git",
-             "git@github.com:bromigos-org/extensions.git")
+# This repository, however the URL spells it: GitHub ignores case, and https, ssh and
+# git@ forms, a .git suffix and a trailing / all reach the same place.
+HERE = re.compile(r"^(https://|ssh://)?([^@/]*@)?(www\.)?github\.com(:\d+)?[:/]+bromigos-org/extensions(\.git)?/*$",
+                  re.IGNORECASE)
 CODE = {"live-deck", "widget", "vector-tool", "vector-memory", "homelab-adapter", "command", "hook"}
 EXEC = {"command", "hook"}
 errors = []
@@ -32,17 +36,30 @@ def fail(where, msg):
     errors.append(f"{where}: {msg}")
 
 
+def load_toml(path, where):
+    """The parsed file, or None (with the error recorded) when it isn't valid TOML."""
+    try:
+        with open(path, "rb") as f:
+            return tomllib.load(f)
+    except (tomllib.TOMLDecodeError, UnicodeDecodeError) as e:
+        fail(where, f"not valid TOML: {e}")
+        return None
+
+
 def schema_check(doc, schema_file, where):
+    """True when doc has the schema's shape; the checks after it rely on that shape."""
     try:
         import jsonschema
     except ImportError:
         fail(where, "jsonschema isn't installed (pip install jsonschema)")
-        return
+        return False
     with open(os.path.join(ROOT, "schema", schema_file)) as f:
         schema = json.load(f)
     v = jsonschema.Draft202012Validator(schema)
-    for e in sorted(v.iter_errors(doc), key=lambda e: list(e.path)):
+    found = sorted(v.iter_errors(doc), key=lambda e: [str(p) for p in e.path])
+    for e in found:
         fail(where, f"{'/'.join(str(p) for p in e.path) or '(top)'}: {e.message}")
+    return not found
 
 
 def git_modes():
@@ -66,9 +83,9 @@ def check_example(entry, modes):
     if not os.path.isfile(mpath) or os.path.islink(mpath):
         fail(where, "no bromigos-ext.toml (or it's a symlink)")
         return
-    with open(mpath, "rb") as f:
-        m = tomllib.load(f)
-    schema_check(m, "bromigos-ext.schema.json", f"{where} bromigos-ext.toml")
+    m = load_toml(mpath, f"{where} bromigos-ext.toml")
+    if m is None or not schema_check(m, "bromigos-ext.schema.json", f"{where} bromigos-ext.toml"):
+        return
     meta = m.get("extension", {})
     if meta.get("name") != name:
         fail(where, f"the manifest calls it {meta.get('name')!r}")
@@ -107,11 +124,16 @@ def check_example(entry, modes):
 
 
 def main():
-    with open(os.path.join(ROOT, "index.toml"), "rb") as f:
-        index = tomllib.load(f)
-    schema_check(index, "index.schema.json", "index.toml")
+    index = load_toml(os.path.join(ROOT, "index.toml"), "index.toml")
+    # The checks below read each entry's fields: only with the schema's shape.
+    if index is None or not schema_check(index, "index.schema.json", "index.toml"):
+        for err in errors:
+            print("ERROR", err)
+        print(f"index.toml can't be read, {len(errors)} errors")
+        sys.exit(1)
     modes = git_modes()
     seen = set()
+    checked = set()
     entries = index.get("extension", [])
     for e in entries:
         name = e.get("name", "?")
@@ -130,11 +152,17 @@ def main():
                     fail(name, f"preview {pv}: not a PNG, JPEG or WebP")
                 if os.path.getsize(p) > 1 << 20:
                     fail(name, f"preview {pv}: over 1 MB")
-        if e.get("url", "").rstrip("/") in HERE_URLS and not e.get("bundled"):
+        if HERE.match(e.get("url", "").strip()) and not e.get("bundled"):
             if not e.get("path"):
                 fail(name, "an entry in this repository needs its path")
             else:
+                checked.add(os.path.realpath(os.path.join(ROOT, e["path"])))
                 check_example(e, modes)
+    examples = os.path.join(ROOT, "examples")
+    for d in sorted(os.listdir(examples)) if os.path.isdir(examples) else []:
+        p = os.path.join(examples, d)
+        if (os.path.isdir(p) or os.path.islink(p)) and os.path.realpath(p) not in checked:
+            fail(f"examples/{d}", "no entry in index.toml lists it, so nothing checks it")
     for err in errors:
         print("ERROR", err)
     print(f"{len(entries)} entries, {len(errors)} errors")

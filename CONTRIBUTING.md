@@ -93,7 +93,11 @@ licence = "MIT"
 - for an entry in this repository, its folder: the manifest's name and kinds match the
   entry, each part exists inside the folder and isn't a symlink, commands and hooks are
   committed executable, Python compiles, the permissions match the parts, and no symlink
-  leaves the folder.
+  leaves the folder;
+- each folder under `examples/` has an entry, so none goes unchecked.
+
+An entry counts as "in this repository" however its `url` spells this repository.
+`tools/test_check.py` tests the check itself; CI runs both.
 
 ## What reviewers look for
 
